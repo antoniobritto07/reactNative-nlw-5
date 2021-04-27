@@ -12,37 +12,39 @@ import weteringIMG from "../assets/watering.png";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
-import { Feather } from "@expo/vector-icons"
+import { Feather } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/core';
 // expo install @expo/vector-icons ->importação para mexer com icones importanto diretamente pelo expo
 
 export function Welcome() {
+  const navigation = useNavigation();
+
+  function handleStart() {
+    navigation.navigate("UserIdentification");
+  }
   return (
     <SafeAreaView style={styles.container}>
-      {/* esse safeAreaView serve apenas para ficar em torno de todos os elementos da página, porem ele é melhor porque ele leva em consideração aquela borda preta que tem em cima do iphone */} */
-      {/* não conseguimos dar padding no SafeAreaView */}
       <View style={styles.wrapper}>
         <Text style={styles.title}>
-          Gerencie {'\n'}
-        suas plantas de {'\n'}
-        forma fácil
+          Gerencie {'\n'}suas plantas de {'\n'}forma fácil
         </Text>
 
         <Image
           source={weteringIMG}
           style={styles.image}
-          resizeMode="contain" //isso para a imagem ficar contida dentro da window, e nao ser tratada como um elemento comum
+          resizeMode="contain"
         />
 
         <Text style={styles.subtitle}>
           Não esqueça mais de regar as plantas.
-          Nós cuidamos de lembrar você sempre que precisar
+          Nós cuidamos de lembrar você sempre que precisar.
         </Text>
 
         <TouchableOpacity
           style={styles.button}
           activeOpacity={0.7}
+          onPress={handleStart}
         >
-          {/* esse elemento do "TouchableOpacity" serve como uma espécie de botão que muda a opacidade sempre que é pressionado */}
           <Feather
             name="chevron-right"
             style={styles.buttonIcon}
