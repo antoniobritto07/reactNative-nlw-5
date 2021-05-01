@@ -7,16 +7,16 @@ import {
   View,
   KeyboardAvoidingView, //podemos com este personalizar o comportamento de acordo com o dispositivo ao qual a pesosa está usando
   Platform,
-  TouchableWithoutFeedbackBase, // isso aqui serve para, do jeito que foi usado para quando a pessoa abrir o teclado, e apertar em alguma coisa fora, ela conseguir fechar o teclado
+  TouchableWithoutFeedback, // isso aqui serve para, do jeito que foi usado para quando a pessoa abrir o teclado, e apertar em alguma coisa fora, ela conseguir fechar o teclado
   Keyboard // tem que ser usado da forma com que foi usado lá embaixo na linha 55
 } from 'react-native';
 
 import { Button } from "../components/Button";
+import { useNavigation } from '@react-navigation/core';
 
 import { Entypo } from '@expo/vector-icons';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { useNavigation } from '@react-navigation/core';
 
 export function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
@@ -52,7 +52,7 @@ export function UserIdentification() {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <TouchableWithoutFeedbackBase onPress={Keyboard.dismiss}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.content}>
             <View style={styles.form}>
               <View style={styles.header}>
@@ -65,7 +65,7 @@ export function UserIdentification() {
                 </Text>
                 <Text style={styles.title}>
                   Como podemos {'\n'}chamar você?
-          </Text>
+                </Text>
               </View>
 
               <TextInput
@@ -87,7 +87,7 @@ export function UserIdentification() {
               </View>
             </View>
           </View>
-        </TouchableWithoutFeedbackBase>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
 

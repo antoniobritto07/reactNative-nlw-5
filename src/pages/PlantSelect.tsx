@@ -8,14 +8,13 @@ import {
 } from 'react-native';
 
 import { Header } from '../components/Header'
+import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { EnvironmentButton } from '../components/EnvironmentButton';
 import { Load } from '../components/Load'
 
 import api from '../services/api';
-
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { PlantCardPrimary } from '../components/PlantCardPrimary';
 
 interface EnvironmentProps {
   key: string;
