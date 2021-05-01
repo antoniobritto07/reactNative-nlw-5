@@ -14,6 +14,7 @@ import fonts from "../styles/fonts";
 
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/core';
+import api from '../services/api';
 // expo install @expo/vector-icons ->importação para mexer com icones importanto diretamente pelo expo
 
 export function Welcome() {
@@ -22,6 +23,7 @@ export function Welcome() {
   function handleStart() {
     navigation.navigate("UserIdentification");
   }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
@@ -51,6 +53,7 @@ export function Welcome() {
           />
         </TouchableOpacity>
       </View>
+
     </SafeAreaView>
   )
 }
