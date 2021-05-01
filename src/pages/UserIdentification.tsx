@@ -8,12 +8,13 @@ import {
   KeyboardAvoidingView, //podemos com este personalizar o comportamento de acordo com o dispositivo ao qual a pesosa está usando
   Platform,
   TouchableWithoutFeedback, // isso aqui serve para, do jeito que foi usado para quando a pessoa abrir o teclado, e apertar em alguma coisa fora, ela conseguir fechar o teclado
-  Keyboard // tem que ser usado da forma com que foi usado lá embaixo na linha 55
+  Keyboard,  // tem que ser usado da forma com que foi usado lá embaixo na linha 55
+  Alert
 } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Button } from "../components/Button";
-import { useNavigation } from '@react-navigation/core';
-
 import { Entypo } from '@expo/vector-icons';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -38,12 +39,13 @@ export function UserIdentification() {
     setName(value)
   }
 
-  function handleSubmit() {
-    if (isFilled) {
+  async function handleSubmit() {
+    if (!!name) {
+      await AsyncStorage.setItem('@plantmanager:user', name);
       navigation.navigate("Confirmation");
     }
     else {
-      navigation.navigate("UserIdentification")
+      Alert.alert("Me diz como podemos chamar você :(")
     }
   }
   return (
