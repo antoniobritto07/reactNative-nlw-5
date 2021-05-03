@@ -9,7 +9,7 @@ import {
   Platform,
   TouchableWithoutFeedback, // isso aqui serve para, do jeito que foi usado para quando a pessoa abrir o teclado, e apertar em alguma coisa fora, ela conseguir fechar o teclado
   Keyboard,  // tem que ser usado da forma com que foi usado lá embaixo na linha 55
-  Alert
+  Alert //alerta padrão do native
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -41,8 +41,18 @@ export function UserIdentification() {
 
   async function handleSubmit() {
     if (!!name) {
-      await AsyncStorage.setItem('@plantmanager:user', name);
-      navigation.navigate("Confirmation");
+      try {
+        await AsyncStorage.setItem('@plantmanager:user', name);
+        navigation.navigate("Confirmation", {
+          title: 'Prontinho',
+          subtitle: 'Agora vamos começar a cuidar das suas plantinhas com muito cuidado',
+          buttonTitle: 'Começar',
+          nextScreen: 'PlantSelect'
+        });
+      } catch (error) {
+        Alert.alert("Não foi possível salvar o seu nome! 😢");
+        throw new Error(error);
+      }
     }
     else {
       Alert.alert("Me diz como podemos chamar você :(")
