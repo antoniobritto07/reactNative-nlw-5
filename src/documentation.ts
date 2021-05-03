@@ -3,3 +3,5 @@
 // localStorage. Basca buscar no google por Expo Async Storage e seguir os passos
 
 // colocamos o @plantmanager:user só para ficar de forma mais semântica para a aplicação
+
+//datetimepicker do expo foi usado para fazer a parte da seleção de horario usada no PlantSave
